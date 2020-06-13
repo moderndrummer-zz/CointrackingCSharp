@@ -1,18 +1,22 @@
 using System;
 using System.IO;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 
 namespace ct_api
 {
-    class Program
+    public class Program
     {
-        const string apiKey = "your_api_key_here";
-        const string apiSecret = "your_secret_here";
-
-
         static async Task Main(string[] args)
         {
+            var config = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json", true, true)
+                .Build();
+
+            var apiKey = config["apiKey"];
+            var apiSecret = config["apiSecret"];
+
             //REAL DATA
             var api = new CoinTrackingAPI(apiKey, apiSecret);
             var response = await api.GetBalance();
@@ -21,14 +25,16 @@ namespace ct_api
             //var response = await File.ReadAllTextAsync("MockBalanceData.json");
 
             var model = JsonConvert.DeserializeObject<Root>(response);
+            if (model.Success == 0) {
+                throw new Exception("Request failed, check your API keys");
+            }
 
             Console.WriteLine($"Total Account Value: {model.Summary.ProfitFiat} {model.AccountCurrency}");
-
 
             foreach (var item in model.Details)
             {
                 if (double.TryParse(item.Value.ValueFiat, out var value) && value > 1)
-                    Console.WriteLine($"{item.Value.Amount} {item.Key} \t\t => \t\t {item.Value.ValueFiat} {model.AccountCurrency}");
+                    Console.WriteLine($"{item.Value.Amount} {item.Key} => {item.Value.ValueFiat} {model.AccountCurrency}");
             }
 
             Console.WriteLine(response);
