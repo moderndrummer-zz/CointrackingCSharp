@@ -1,0 +1,97 @@
+{
+    "success": 1,
+    "method": "getBalance",
+    "account_currency": "EUR",
+    "details": {
+        "BCH": {
+            "amount": "0.07744583",
+            "coin": "BCH",
+            "value_fiat": "16.56999695",
+            "value_btc": "0.00197898",
+            "price_fiat": "213.95596055",
+            "price_btc": "0.02555311",
+            "change1h": "0.22",
+            "change24h": "1.28",
+            "change7d": "-6.28",
+            "change30d": "-0.04"
+        },
+        "BTC": {
+            "amount": "0.00380037",
+            "coin": "BTC",
+            "value_fiat": "31.82046001",
+            "value_btc": "0.00380037",
+            "price_fiat": "8372.99000000",
+            "price_btc": "1.00000000",
+            "change1h": "0.04",
+            "change24h": "1.26",
+            "change7d": "-2.60",
+            "change30d": "0.75"
+        },
+        "DASH": {
+            "amount": "-0.00000001",
+            "coin": "DASH",
+            "value_fiat": "-0.00000065",
+            "value_btc": "-0.00000000",
+            "price_fiat": "65.25944076",
+            "price_btc": "0.00779404",
+            "change1h": "-0.05",
+            "change24h": "0.50",
+            "change7d": "-6.16",
+            "change30d": "-1.21"
+        },
+        "EMC2": {
+            "amount": "-0.00000003",
+            "coin": "EMC2",
+            "value_fiat": "-0.00000000",
+            "value_btc": "-0.00000000",
+            "price_fiat": "0.05396912",
+            "price_btc": "0.00000645",
+            "change1h": "0.12",
+            "change24h": "0.90",
+            "change7d": "18.17",
+            "change30d": "35.41"
+        },
+        "EOS": {
+            "amount": "57.72338286",
+            "coin": "EOS",
+            "value_fiat": "132.48409596",
+            "value_btc": "0.01582279",
+            "price_fiat": "2.29515474",
+            "price_btc": "0.00027411",
+            "change1h": "-0.60",
+            "change24h": "1.87",
+            "change7d": "-8.29",
+            "change30d": "1.53"
+        },
+        "ETC": {
+            "amount": "9.38067817",
+            "coin": "ETC",
+            "value_fiat": "53.07378674",
+            "value_btc": "0.00633869",
+            "price_fiat": "5.65777717",
+            "price_btc": "0.00067572",
+            "change1h": "-0.05",
+            "change24h": "1.54",
+            "change7d": "-7.10",
+            "change30d": "1.86"
+        },
+        "ZCL": {
+            "amount": "0.00000000",
+            "coin": "ZCL",
+            "value_fiat": "0.00000000",
+            "value_btc": "0.00000000",
+            "price_fiat": "0.14913159",
+            "price_btc": "0.00001781",
+            "change1h": "0.03",
+            "change24h": "1.83",
+            "change7d": "-11.90",
+            "change30d": "-10.81"
+        }
+    },
+    "summary": {
+        "value_fiat": "3668.06687353",
+        "value_btc": "0.43808327",
+        "profit_fiat": "5079.64430476",
+        "profit_btc": "0.60667029"
+    }
+}
