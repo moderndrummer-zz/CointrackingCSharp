@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using ct_api.Models;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 
@@ -10,9 +11,12 @@ namespace ct_api
 {
     public class Program
     {
-        private static readonly DateTime purgeUntil = new DateTime(2018, 1, 29);
+        private static DateTime purgeUntil = DateTime.Now.Date;
         static async Task Main(string[] args)
         {
+            if (args.Any())
+                purgeUntil = DateTime.Parse(args[0]);
+
             // use your own dev configuration file to import your Cointracking API Keys
             var config = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.development.json", true, true)
@@ -29,8 +33,8 @@ namespace ct_api
         private static async Task OutputBalancesUntil(CoinTrackingAPI api, DateTime until)
         {
             var untilLong = until.ToUnixTimeSeconds();
-            var response = await api.GetHistoricalCurrency();
-            //var response = await File.ReadAllTextAsync("MockHistoricalCurrency.json");
+            //var response = await api.GetHistoricalCurrency();
+            var response = await File.ReadAllTextAsync("MockHistoricalCurrency.json");
 
             var json = JsonConvert.DeserializeObject<Dictionary<string, object>>(response);
             var accountCurrency = json.ContainsKey("account_currency") ? json["account_currency"] : null;
@@ -39,6 +43,8 @@ namespace ct_api
                 JsonConvert.DeserializeObject<Dictionary<string, Dictionary<long, HistoricAmount>>>(i.ToString())
             ).ToList();
 
+            Console.WriteLine();
+            Console.WriteLine();
             Console.WriteLine($"Portfolio amounts until {until}");
 
             foreach (var coinEntry in coinData)
