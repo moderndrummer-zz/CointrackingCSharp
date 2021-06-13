@@ -29,8 +29,8 @@ namespace ct_api
         private static async Task OutputBalancesUntil(CoinTrackingAPI api, DateTime until)
         {
             var untilLong = until.ToUnixTimeSeconds();
-            //var response = await api.GetHistoricalCurrency();
-            var response = await File.ReadAllTextAsync("MockHistoricalCurrency.json");
+            var response = await api.GetHistoricalCurrency();
+            //var response = await File.ReadAllTextAsync("MockHistoricalCurrency.json");
 
             var json = JsonConvert.DeserializeObject<Dictionary<string, object>>(response);
             var accountCurrency = json.ContainsKey("account_currency") ? json["account_currency"] : null;
